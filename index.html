@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartu Ulang Tahun Spesial 🎂</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ffe6f2, #ffd1dc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* --- BALON --- */
+.balloons {
+  position: absolute;
+  bottom: -150px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.balloon {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: #ff66b2;
+  animation: floatUp 12s ease-in infinite;
+  opacity: 0.8;
+}
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: #aaa;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.balloon:nth-child(1) { left: 5%; background: #ff99cc; animation-delay: 0s; }
+.balloon:nth-child(2) { left: 25%; background: #ffb6c1; animation-delay: 2s; }
+.balloon:nth-child(3) { left: 45%; background: #ffd1dc; animation-delay: 4s; }
+.balloon:nth-child(4) { left: 65%; background: #fcbad3; animation-delay: 6s; }
+.balloon:nth-child(5) { left: 85%; background: #ff69b4; animation-delay: 8s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+}
+
+/* --- KARTU UCAPAN --- */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+  text-align: center;
+  max-width: 420px;
+  animation: floatCard 5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- TEKS --- */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #ff3b8d;
+  text-shadow: 2px 2px #fff;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffb3c6; }
+  to { text-shadow: 0 0 25px #ff4081; }
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: #666;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+p {
+  color: #444;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.heart {
+  color: #ff3366;
+  font-size: 1.5rem;
+  animation: beat 1s infinite;
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* --- SURAT UCAPAN --- */
+.toggle-container {
+  margin-top: 20px;
+}
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  background: #ff80aa;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+label:hover {
+  background: #ff4d88;
+  box-shadow: 0 0 10px rgba(255, 77, 136, 0.6);
+}
+
+.letter {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease, opacity 1s ease;
+  opacity: 0;
+  background: #fff0f5;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: inset 0 0 10px rgba(255, 182, 193, 0.5);
+}
+
+/* versi scrollable */
+.letter-content {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0 20px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff80aa #ffe6f2;
+}
+.letter-content::-webkit-scrollbar {
+  width: 8px;
+}
+.letter-content::-webkit-scrollbar-thumb {
+  background: #ff80aa;
+  border-radius: 10px;
+}
+.letter-content::-webkit-scrollbar-track {
+  background: #ffe6f2;
+}
+
+input[type="checkbox"]:checked ~ .letter {
+  max-height: 320px;
+  opacity: 1;
+  padding: 15px 0;
+}
+
+/* --- FOOTER --- */
+footer {
+  position: fixed;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #666;
+}
+</style>
+</head>
+
+<body>
+  <div class="balloons">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+  </div>
+
+  <div class="card">
+    <h1>Selamat Ulang Tahun, Nia Bawellll! 🎉</h1>
+    <h2>19 Oktober 2025</h2>
+    <p>Hari ini adalah hari istimewa untukmu, semoga dipenuhi dengan cinta, tawa, dan kebahagiaan. 💕</p>
+    <p>Kamu luar biasa <span class="heart">❤️</span></p>
+
+    <div class="toggle-container">
+      <input type="checkbox" id="surat">
+      <label for="surat">💌 Buka Surat Iniiiii</label>
+
+      <div class="letter">
+        <div class="letter-content">
+          <p>Hai Nia,</p>
+          <p>Selamat ulang tahun ya! 🎂 Semoga semua harapanmu terwujud, langkahmu selalu ringan, dan hatimu selalu hangat penuh cinta.</p>
+          <p>Terima kasih sudah menjadi pribadi yang baik dan menyenangkan. Jangan pernah berhenti tersenyum, karena senyummu bisa menerangi hari siapa pun yang melihatnya. 🌸</p>
+          <p>Hari ini bukan hanya hari ulang tahunmu, tapi juga hari untuk merayakan betapa berharganya kamu di mata orang-orang yang mencintaimu.</p>
+          <p>Semoga setiap langkahmu membawa keberkahan, setiap mimpimu mendekat pada kenyataan, dan setiap harimu dipenuhi tawa dan kasih sayang. 💖</p>
+          <p>Dengan cinta, <br><b>dari Asep</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Kartu Ulang Tahun Spesial untuk Nia BaWeL</footer>
+</body>
+</html>
